@@ -1,4 +1,4 @@
 codeeval-python
 ===============
 
-python codeeval 
+Playing around with codeeval test! All tests are in python and pass. 
