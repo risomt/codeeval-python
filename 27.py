@@ -22,30 +22,29 @@ Output sample:
 """
 
 # if we're allowed to use functions: print(bin(int(line.strip()))[2:])
-# algorithm derived from http://www.wikihow.com/Convert-from-Decimal-to-Binary #2
 
-from sys import argv		
+from sys import argv
 
 with open(argv[1]) as data:
 	for line in data.readlines():
 	
 		# parse out the number to generate in binary
-		original = int(line.strip())
-		number = original
+		number = int(line.strip())
 		binary = []
 
+		# explanation: http://www.wikihow.com/Convert-from-Decimal-to-Binary #2
+		# the remainder (mod) of the current number and the base (2) represents the
+		# opposite value in binary (hence the reverse at the end)
 		while True:
-			# if we hit 0 we're done!
 			if number == 0:
-				# hack - the (last) 2^0 is not coming out correctly
-				# this makes the 2^0 position 1 if the original is odd
-				binary[-1] = original % 2
 				break
 			else:
-				# divide by base (2) to get new number and continue on
-				number = number / 2
-
-				# determine whether to add a 1 or 0
+				# determine binary representation of current number
 				binary.append(number % 2)
 
-		print "".join(map(str, binary))
+				# divide number by half and continue until we reach 0
+				number = number / 2
+
+		# reverse to complete and turn it into a string
+		binary.reverse()
+		print("".join(map(str, binary)))
