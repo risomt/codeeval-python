@@ -38,9 +38,8 @@ class Stack:
 
         # push a new integer onto the stack
         def push(self, element):
-                if type(element) == int:
-                        self.__data.insert(self.__len, element)
-                        self.__len += 1
+                self.__data.insert(self.__len, element)
+                self.__len += 1
 
         # pop an item off the stack, return special None if there are no more
         def pop(self):
@@ -64,7 +63,8 @@ with open(argv[1]) as data:
                 stack = Stack()
 
                 # fill it with the given input, e.g.: "1 2 3 4\n"
-                for element in map(int, line.strip().split()):
+                # note - test was failing when this converted input to integers - is  test input a trick?
+                for element in line.strip().split():
                         stack.push(element)
 
                 # pop everything off and shove into temporary list
