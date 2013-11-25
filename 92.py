@@ -25,6 +25,6 @@ from sys import argv
 
 with open(argv[1]) as data:
         for line in data.readlines():
-
-                lines = line.strip().split()
-                print lines[-2]
+                #split words apart by space and then output second to last
+                words = line.strip().split()
+                print words[-2]
