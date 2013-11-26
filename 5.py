@@ -39,14 +39,15 @@ with open(argv[1]) as data:
                                 # sequence, check to see if it's a sequence
                                 if key == keyb:
 
-                                        print key, index, keyb, indexb
-                                        print sequence[index:index + (indexb - index)], sequence[indexb:indexb + (indexb - index)]
-
                                         # check to see if the sequence matches by comparing the subset
                                         # of the value to it's duplcate value - if the two sublists are exactly
                                         # equal we have a sequence!
-                                        if sequence[index:indexb] == sequence[indexb:indexb + (indexb - index)]:
-                                                sequences.append(sequence[index:indexb])
+                                        for x in range(indexb, index, -1):
+                                                if len(sequence) - indexb >= x:
+                                                        if sequence[index:x] == sequence[indexb:indexb + (x - index)]:
+                                                                sequences.append(sequence[indexb:indexb + (indexb - index)])
+
+                print sequences
 
                 # if there are any sequences print the first one
                 if len(sequences):
