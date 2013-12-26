@@ -30,6 +30,6 @@ for row in xrange(1, 13):
         matrix.append(temp)
 
 for row in matrix:
-        print " ".join(str(number) for number in row)
+        print "".join("{:>4}".format(number) for number in row)
 
 # TO DO - fix formatting
